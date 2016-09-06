@@ -53,20 +53,4 @@ class Car
     }
 }
 
-$porsche = new Car("2014 Porsche 911", 114991, 7864,"../img/porsche-model.png");
-$ford = new Car("2011 Ford F450", 55995,55995, "../img/ford.png");
-$lexus = new Car("2013 Lexus RX 350",  20000, 8990809, "../img/lexus.png");
-$mercedes = new Car("Mercedes Benz CLS550",8980, 2, "../img/mercedes.png");
-
-
-$cars = array($porsche, $ford, $lexus, $mercedes);
-
-$cars_matching_search = array();
-foreach ($cars as $car) {
-    $price =  $car->getPrice();
-    $miles = $car->getMiles();
-    if ($miles <  $_GET["input_miles"] && $price < $_GET["input_price"]) {
-        array_push($cars_matching_search, $car);
-    }
-}
 ?>
