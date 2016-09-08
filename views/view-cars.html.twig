@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title></title>
+    </head>
+    <body>
+        {% if cars is not empty %}
+            <ul>
+                {% for car in cars %}
+                <li>
+                    <p> <img src='{{car.getImage}}'/> </p>
+                    <p> Car: {{car.getModel}} </p>
+                    <p> Price: {{car.getPrice}} </p>
+                    <p> Miles: {{car.getMiles}} </p>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p> No cars matching your search. Lower your expectations. </p>
+        {% endif %}
+    </body>
+</html>

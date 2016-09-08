@@ -1,12 +1,12 @@
-
 <?php
-
+//Object
 class Car
 {
     private $make_model;
     private $price;
     private $miles;
-    public $image;
+    private $image;
+//Constructor
     function __construct($make_model,  $price = 0, $miles=4, $image )
     {
         $this->make_model = $make_model;
@@ -14,6 +14,8 @@ class Car
         $this->miles = $miles;
         $this->image = $image;
     }
+
+//Getters and Setters
     function setPrice ($new_price)
     {
         $float_price =(float) $new_price;
@@ -50,6 +52,27 @@ class Car
     {
         return $this->miles;
 
+    }
+    function setImage ($new_image)
+    {
+        if($new_image){
+            $this->image = $new_image;
+        }
+    }
+    function getImage ()
+    {
+        return $this->image;
+
+    }
+//Methods
+    function save()
+    {
+        array_push($_SESSION['cars'], $this);
+    }
+//Static Methods
+    static function getAll()
+    {
+        return $_SESSION['cars'];
     }
 }
 
