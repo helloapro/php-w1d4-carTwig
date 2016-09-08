@@ -5,6 +5,14 @@
     session_start();
     if (empty($_SESSION['cars'])) {
         $_SESSION['cars'] = array();
+        $porsche = new Car("2014 Porsche 911", 114991, 7864,"../img/porsche-model.png");
+        $ford = new Car("2011 Ford F450", 55995,55995, "../img/ford.png");
+        $lexus = new Car("2013 Lexus RX 350",  20000, 8990809, "../img/lexus.png");
+        $mercedes = new Car("Mercedes Benz CLS550",8980, 2, "../img/mercedes.png");
+        $porsche->save();
+        $ford->save();
+        $lexus->save();
+        $mercedes->save();
     }
 
     $app = new Silex\Application();
@@ -20,14 +28,6 @@
     });
 
     $app->get("/view-cars", function() use ($app) {
-        $porsche = new Car("2014 Porsche 911", 114991, 7864,"../img/porsche-model.png");
-        $ford = new Car("2011 Ford F450", 55995,55995, "../img/ford.png");
-        $lexus = new Car("2013 Lexus RX 350",  20000, 8990809, "../img/lexus.png");
-        $mercedes = new Car("Mercedes Benz CLS550",8980, 2, "../img/mercedes.png");
-        $porsche->save();
-        $ford->save();
-        $lexus->save();
-        $mercedes->save();
         $cars_matching_search = array();
         foreach ($_SESSION['cars'] as $car) {
             $price =  $car->getPrice();
